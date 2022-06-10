@@ -11,16 +11,17 @@ const app = async (yargsObj) => {
     } else if (yargsObj.list) {
       //Find movies
       await findMovies()
+      console.log ("Full collection of movies on the database has been displayed above.")
     } else if (yargsObj.update) {
       //Update a movie
       await updateMovie({title: yargsObj.title, newTitle: yargsObj.newTitle});
-      console.log (`${yargsObj.newTitle} Successfully Updated`);
+      console.log (`Movie title ${yargsObj.title} has been Successfully Updated to ${yargsObj.newTitle}`);
     } else if (yargsObj.delete) {
       //Delete a movie
       await deleteMovie({title: yargsObj.title});
-      console.log ("Successfully Deleted");
+      console.log (`${yargsObj.title} has been Successfully Deleted from the database`);
     } else {
-      console.log("Incorrect command");
+      console.log("Incorrect Command");
     }
     await mongoose.disconnect();
 };
